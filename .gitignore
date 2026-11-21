@@ -1,0 +1,22 @@
+# 赛前验证脚本，不属于比赛项目
+pretest/
+# 本地 agent skills
+.claude/
+skills-lock.json
+
+node_modules/
+.env*
+!.env.example
+.next/
+out/
+cache/
+broadcast/
+.vercel/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/lib/
