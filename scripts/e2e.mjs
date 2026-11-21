@@ -26,9 +26,19 @@ const account = privateKeyToAccount(env.RELAYER_PRIVATE_KEY);
 const pc = createPublicClient({ chain, transport: http() });
 const wc = createWalletClient({ account, chain, transport: http() });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// 网络不稳定时自动重试（登记问卷是幂等的；提交重试时服务端会返回已有结果）
 const post = async (path, body) => {
-  const r = await fetch(BASE + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
-  return { status: r.status, ...(await r.json()) };
+  let err;
+  for (let i = 0; i < 5; i++) {
+    try {
+      const r = await fetch(BASE + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      return { status: r.status, ...(await r.json()) };
+    } catch (e) {
+      err = e;
+      await sleep(1500);
+    }
+  }
+  throw err;
 };
 
 const content = {
@@ -83,6 +93,7 @@ const goods = [];
 for (let i = 0; i < GOOD; i++) goods.push(respondent(`认真填写者 ${i + 1}`, { delayMs: 12000 + i * 300, text: "现场氛围很好，学到了很多", checkRight: true }));
 await Promise.all(goods);
 
-const live = await (await fetch(`${BASE}/api/surveys/${id}`)).json();
+let live;
+for (let i = 0; i < 5; i++) { try { live = await (await fetch(`${BASE}/api/surveys/${id}`)).json(); break; } catch { await sleep(1500); } }
 console.log("大屏统计", { claimed: live.stats.claimed, rejected: live.stats.rejected, remaining: formatEther(BigInt(live.stats.remaining)), best: live.stats.best?.nick });
 console.log(`问卷页 ${BASE}/s/${id}\n大屏 ${BASE}/live/${id}\n后台 ${BASE}/admin/${id}?token=${adminToken}`);
