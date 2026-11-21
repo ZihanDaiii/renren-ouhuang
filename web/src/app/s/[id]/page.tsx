@@ -254,7 +254,7 @@ export default function SurveyPage({ params }: { params: Promise<{ id: string }>
             {q.type === "text" ? (
               <TextAnswer value={String(answers[q.id] ?? "")} min={q.minChars ?? 2} onChange={(v) => setAnswers((a) => ({ ...a, [q.id]: v }))} />
             ) : (
-              <div className="opts">
+              <div className="opts" key={q.id}>
                 {q.options.map((o, i) => (
                   <button key={i} className={`opt ${answers[q.id] === i ? "sel" : ""}`} onClick={() => choose(q.id, i)}>
                     {q.type === "check" ? <i className="sw" style={{ background: SWATCH[i] }} /> : <span className="key">{String.fromCharCode(65 + i)}</span>}

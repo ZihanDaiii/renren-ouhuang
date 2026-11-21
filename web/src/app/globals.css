@@ -94,6 +94,8 @@ svg.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-widt
 .opts { display: grid; gap: 10px; }
 .opt { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 14px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); font-size: 15.5px; font-weight: 500; cursor: pointer; text-align: left; width: 100%; transition: border-color .15s, background .15s, transform .12s; }
 .opt:active { transform: scale(.98); }
+.opt:focus { outline: none; }
+.opt:focus-visible { box-shadow: 0 0 0 3px var(--blue-100); }
 .opt .key { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; font-weight: 600; background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); flex: none; }
 .opt.sel { border-color: var(--blue); background: var(--blue-50); }
 .opt.sel .key { background: var(--blue); color: #fff; border-color: var(--blue); }
