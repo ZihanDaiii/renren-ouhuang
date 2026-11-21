@@ -3,6 +3,7 @@ import { use, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { getBurner } from "@/lib/burner";
+import { Withdraw } from "@/components/Withdraw";
 import { fmtAmount, nick, short, txUrl } from "@/lib/chain";
 import { minSecondsFor, textProblem } from "@/lib/qc";
 import type { AnyQuestion, PublicSurvey, QcReason } from "@/lib/types";
@@ -342,8 +343,9 @@ export default function SurveyPage({ params }: { params: Promise<{ id: string }>
           if (navigator.share) navigator.share({ title: "问卷拼手气", text, url: location.href }).catch(() => {});
           else navigator.clipboard?.writeText(`${text} ${location.href}`);
         }}><Icon name="share" />分享给朋友</button>
+        <Withdraw compact />
         <a className="txline" href={txUrl(result.txHash)} target="_blank" rel="noreferrer"><Icon name="ext" />链上记录 <span className="num">{short(result.txHash, 8, 6)}</span></a>
-        <div className="fine">收款钱包 {short(burner.current?.address)}（{nick(burner.current?.address || "0x0000")}），私钥只保存在这台手机的浏览器里</div>
+        <div className="fine">收款钱包 {short(burner.current?.address)}（{nick(burner.current?.address || "0x0000")}），私钥只保存在这台手机的浏览器里 · <Link href="/me">我的钱包</Link></div>
       </main>
     );
   }
