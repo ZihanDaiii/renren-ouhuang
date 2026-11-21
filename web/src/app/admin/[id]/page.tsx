@@ -132,7 +132,7 @@ export default function AdminPage({ params }: { params: Promise<{ id: string }> 
   return (
     <div className="admin">
       <aside className="side">
-        <Link href="/" className="brand"><span className="logo" />问卷拼手气</Link>
+        <Link href="/" className="brand"><span className="logo" />人人都是欧皇</Link>
         <a className="on" href="#"><Icon name="dash" />总览</a>
         <Link href={`/live/${id}`} target="_blank"><Icon name="monitor" />开奖大屏</Link>
         <Link href={`/s/${id}`} target="_blank"><Icon name="file" />问卷页面</Link>

@@ -184,7 +184,7 @@ export default function SurveyPage({ params }: { params: Promise<{ id: string }>
     return (
       <main className="app">
         <div className="topbar">
-          <Link href="/" className="brand"><span className="logo" />问卷拼手气</Link>
+          <Link href="/" className="brand"><span className="logo" />人人都是欧皇</Link>
           <span className="chip"><span className="dot" />Monad 测试网</span>
         </div>
         <div className="pub">
@@ -340,7 +340,7 @@ export default function SurveyPage({ params }: { params: Promise<{ id: string }>
         <div className="grow" style={{ minHeight: 16 }} />
         <button className="btn btn-red" onClick={() => {
           const text = `我在「${survey.title}」拆到 ${fmtAmount(result.net, dec, 3)} ${sym}，你也来试试手气`;
-          if (navigator.share) navigator.share({ title: "问卷拼手气", text, url: location.href }).catch(() => {});
+          if (navigator.share) navigator.share({ title: "人人都是欧皇", text, url: location.href }).catch(() => {});
           else navigator.clipboard?.writeText(`${text} ${location.href}`);
         }}><Icon name="share" />分享给朋友</button>
         <Withdraw compact />

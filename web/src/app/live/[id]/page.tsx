@@ -58,7 +58,7 @@ export default function LivePage({ params }: { params: Promise<{ id: string }> }
   return (
     <main className="live">
       <section className="live-l">
-        <div className="brand"><span className="logo" />问卷拼手气</div>
+        <div className="brand"><span className="logo" />人人都是欧皇</div>
         <h2>扫码答 {s.questions.length} 道题，<br />拆一个<em>红包</em></h2>
         <p className="lsub">{s.title} · 认真填就能领，钱直接到你手机里</p>
         <div className="qrbox">

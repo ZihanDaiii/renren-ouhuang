@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "问卷拼手气 · 认真填，一秒到账",
+  title: "人人都是欧皇 · 认真填，一秒到账",
   description: "问卷 + 拼手气红包：不填抢不到，乱填领不到。奖金锁在 Monad 链上，质检规则公开。",
 };
 

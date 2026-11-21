@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="app">
       <div className="topbar">
-        <span className="brand"><span className="logo" />问卷拼手气</span>
+        <span className="brand"><span className="logo" />人人都是欧皇</span>
         <span className="chip"><span className="dot" />Monad 测试网</span>
       </div>
       <div className="hero" style={{ marginTop: 34, paddingTop: 26, paddingBottom: 24 }}>
